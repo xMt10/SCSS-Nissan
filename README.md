@@ -1,4 +1,4 @@
-h1> Car Website - GitHub README</h1>
+<h1> Car Website - GitHub README</h1>
 <p>Welcome to the GitHub repository for SCSS Car Website</p>
 <h2>Technologies Used</h2>
 <ul>
