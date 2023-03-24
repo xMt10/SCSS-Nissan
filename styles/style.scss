@@ -1,0 +1,307 @@
+@import 'variables';
+@import "modules";
+
+// Responsive Structure
+@mixin mobile {
+    @media (max-width:800px) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media (min-width:801px) and (max-width:1200px) {
+        @content;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    mix-blend-mode: darken;
+}
+
+body {
+    background-color: $bg-color;
+    overflow-x: hidden;
+}
+
+//header 
+header {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    img {
+        width: 100px;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+
+        a {
+            text-decoration: none;
+            color: $text-color;
+
+            &:hover {
+                color: crimson;
+                transition: all 0.4s;
+            }
+        }
+    }
+
+    #nav-left {
+        a {
+            padding: 0 20px;
+            border-right: 1px solid gray;
+
+            &:last-child {
+                border-right: none;
+            }
+        }
+
+    }
+
+    #nav-right {
+        gap: 30px;
+        font-size: 15px;
+
+        @include mobile {
+            display: none;
+        }
+    }
+
+    .opener {
+        display: none;
+        position: absolute;
+        right: 5px;
+        bottom: -110px;
+        background-color: rgb(221, 221, 221);
+        box-shadow: 1px 1px 10px;
+        flex-direction: column;
+        gap: 20px;
+        border-radius: 11px;
+        padding: 5px;
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    }
+
+    .menu {
+        width: 40px;
+        display: none;
+
+        @include mobile {
+            display: block;
+        }
+
+        &:hover+.opener {
+            display: flex;
+        }
+    }
+
+}
+
+// hero section
+.hero-section {
+    padding-top: 50px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background: linear-gradient(rgb(215, 215, 215) 40%, $bg-color 40%);
+
+    @include mobile {
+        flex-direction: column;
+    }
+
+    @include laptop {
+        flex-direction: column;
+    }
+
+    p {
+        @extend %p;
+
+    }
+
+    .hero-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+        max-width: 500px;
+
+        @include mobile {
+            gap: 25px;
+        }
+
+        h1 {
+            font-size: 45px;
+            @extend %heading;
+            margin-top: 25px;
+        }
+
+        h3 {
+            font-size: 27px;
+            @extend %heading;
+        }
+
+        img {
+            width: 270px;
+
+            @include laptop {
+                width: 320px;
+            }
+        }
+
+        button {
+            @extend %button;
+            background-color: crimson;
+
+            &:hover {
+                background-color: rgb(132, 9, 34);
+                transition: all .4s;
+            }
+        }
+
+    }
+
+    .hero-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+
+        .hero-img2 {
+            max-width: 700px;
+
+            @include laptop {
+                max-width: 600px;
+            }
+        }
+
+        .hero-img3 {
+            max-width: 400px;
+        }
+
+        p {
+            max-width: 500px;
+        }
+    }
+}
+
+// interior
+#interior {
+    margin-top: 30px;
+    @extend %design;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.5), black), url("/images/interior.jpg");
+}
+
+//cars
+
+#cars-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 60px 0;
+
+    h1 {
+        @extend %heading;
+    }
+
+    .cars {
+        display: flex;
+        gap: 50px;
+
+        @include mobile {
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        @include laptop() {
+            gap: 20px;
+        }
+
+        .card {
+            img {
+                width: 300px;
+            }
+
+            h3 {
+                @extend %p;
+                text-align: center;
+            }
+        }
+    }
+
+    button {
+        @extend %button;
+        background-color: rgb(0, 137, 137);
+        margin-top: 50px;
+
+        &:hover {
+            background-color: rgb(1, 99, 99);
+        }
+    }
+}
+
+#exterior {
+    margin-top: 30px;
+    @extend %design;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.35), black), url("/images/exterior-4.jpg");
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px;
+    padding-top: 50px;
+    background-color: black;
+
+    @include mobile {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    img {
+        width: 100px;
+        height: 120px;
+        mix-blend-mode: unset;
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        @include mobile {
+            text-align: center
+        }
+
+
+        h2 {
+            @extend %heading;
+            font-size: 30px;
+            color: white
+        }
+
+        a {
+            @extend %p;
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+
+            &:hover {
+                color: crimson;
+            }
+        }
+    }
+}
